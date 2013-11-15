@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h2>Items</h2>
+
+    <table border="1">
+        <tr><th>Title</th><th>Author(s)</th><th>Publisher</th><th>PublicationDate</th></tr>
+
+        {% for item in response.Items.Item %}
+        <tr>
+            <td>{{ item.ItemAttributes.Title }}</td>
+            <td>
+                {% for author in item.ItemAttributes.Author %}
+                    <div>{{ author }}</div>
+                {% endfor %}
+            </td>
+            <td>{{ item.ItemAttributes.Publisher }}</td>
+            <td>{{ item.ItemAttributes.PublicationDate }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Complete response</h2>
+    <pre>{{response_xml}}</pre>
+  </body>
+</html>
